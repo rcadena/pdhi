@@ -6,10 +6,27 @@
 	objectVersion = 55;
 	objects = {
 
+/* Begin PBXFileReference section */
+		8A7B626B2706078F00E10C13 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		8A7B626D2706083B00E10C13 /* pdhi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pdhi.c; sourceTree = "<group>"; };
+		8A7B626E27060FCA00E10C13 /* pdhi.pd */ = {isa = PBXFileReference; lastKnownFileType = text; path = pdhi.pd; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
+		8A7990DF2706404A00122A62 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8A7B62602706076700E10C13 = {
 			isa = PBXGroup;
 			children = (
+				8A7B626E27060FCA00E10C13 /* pdhi.pd */,
+				8A7B626D2706083B00E10C13 /* pdhi.c */,
+				8A7B626B2706078F00E10C13 /* Makefile */,
+				8A7990DF2706404A00122A62 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -18,11 +35,12 @@
 /* Begin PBXLegacyTarget section */
 		8A7B62652706076700E10C13 /* pdhi */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
+			buildArgumentsString = "clean alldebug $(ACTION)";
 			buildConfigurationList = 8A7B62682706076700E10C13 /* Build configuration list for PBXLegacyTarget "pdhi" */;
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "";
 			dependencies = (
 			);
 			name = pdhi;
@@ -52,6 +70,7 @@
 				Base,
 			);
 			mainGroup = 8A7B62602706076700E10C13;
+			productRefGroup = 8A7990DF2706404A00122A62 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -171,14 +190,22 @@
 		8A7B62692706076700E10C13 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUGGING_SYMBOLS = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = LN35B974P8;
+				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				OTHER_CFLAGS = "";
+				"OTHER_CFLAGS[arch=*]" = "";
 				OTHER_LDFLAGS = "";
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-bind_at_load",
+					"-undefined",
+					dynamic_lookup,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -186,11 +213,16 @@
 		8A7B626A2706076700E10C13 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = LN35B974P8;
+				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-bind_at_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -205,7 +237,7 @@
 				8A7B62672706076700E10C13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		8A7B62682706076700E10C13 /* Build configuration list for PBXLegacyTarget "pdhi" */ = {
 			isa = XCConfigurationList;
@@ -214,7 +246,7 @@
 				8A7B626A2706076700E10C13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
